@@ -16,9 +16,9 @@ sia init
 
 This will install the nunjucks template files, some base css and a shell `index.html`
 
-It also add the `siarc.js` config file to the root of your project.
+It also add the `.siarc.js` config file to the root of your project.
 
-The `siarc.js` file contains two sections.  One for configuing your site information. The second is to configure the app's folders, numjucks template, and markdown configutation. 
+The `.siarc.js` file contains two sections.  One for configuing your site information. The second is to configure the app's folders, numjucks template, and markdown configutation. 
 
 
 ## Adding pages and posts
@@ -71,11 +71,11 @@ The default output folder is `/public`
 
 The build command will also copy all `assets`, `js` and `css` to the `/public` folder.  If a post or a page folder contain other files other than markdown then those files will also get moved to the `/public/<folder>`.  This makes it easy to organize a single page or posts with custom js, css, or images.
 
-All markdown files will get parsed with `markdown-it` and you can add additional `markdown-it` plugins in the `siarc.js` file.
+All markdown files will get parsed with `markdown-it` and you can add additional `markdown-it` plugins in the `.siarc.js` file.
 
 ## Plugins
 
-There are lots of plugins that you can use in sia to extend [markdown-it](https://github.com/markdown-it/markdown-it) and in turn sia.  Just install the plugin, import itto your `siarc.js` file and then add it to the `app.markdown.plugins` array.  
+There are lots of plugins that you can use in sia to extend [markdown-it](https://github.com/markdown-it/markdown-it) and in turn sia.  Just install the plugin, import itto your `.siarc.js` file and then add it to the `app.markdown.plugins` array.  
 
 ## Local developement 
 
@@ -111,3 +111,5 @@ This is a list of items that still need to be tackled
 [ ] Better error handling
 [ ] Pagination
 [ ] `sia init` to generate a new site and clean up of the initial theme
+[ ] While pages and longer blog posts are great, i would like to add a mircoblogging feed to the site.
+[ ] Github action to publish new version to npm
