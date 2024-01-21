@@ -1,4 +1,4 @@
-# Sia Micro blog
+# Sia blog
 
 Sia is static site generator
 
@@ -56,6 +56,7 @@ description: Testing out some markdown
 - `create_at` is the date of the post
 - `description` a short description of the post
 
+Not ready to publish a post?  Add `draft: true`
 
 ## Build
 
