@@ -1,0 +1,13 @@
+{%extends "_layout.njk" %} 
+
+{% block content %}
+<article>
+  <header>
+    <h1 class="post-title">{{ page.title }}</h1>
+    <time datetime="{{page.date.datetime}}" class="date">
+      {{ page.date.datetime }}
+    </time>
+  </header>
+  <p>{{ content }}</p>
+</article>
+{% endblock %}
