@@ -73,6 +73,10 @@ The build command will also copy all `assets`, `js` and `css` to the `/public` f
 
 All markdown files will get parsed with `markdown-it` and you can add additional `markdown-it` plugins in the `siarc.js` file.
 
+## Plugins
+
+There are lots of plugins that you can use in sia to extend [markdown-it](https://github.com/markdown-it/markdown-it) and in turn sia.  Just install the plugin, import itto your `siarc.js` file and then add it to the `app.markdown.plugins` array.  
+
 ## Local developement 
 
 Currently these are the apps that I use on my blog for local development and building
@@ -91,7 +95,7 @@ Currently these are the apps that I use on my blog for local development and bui
 npm install forever concurrently http-server
 ```
 
-coming soon will be a simple way to run a local web server to see live updates to posts and pages as you work via the `sia` command.
+Coming soon will be a simple way to run a local web server to see live updates to posts and pages as you work via the `sia` command.
 
 ## Templates and site configuration
 
@@ -99,3 +103,11 @@ All `njk` files are in a simple default state to generate a simple and clean web
 
 If you make something cool please let me know.
 
+
+## Todo
+
+This is a list of items that still need to be tackled
+
+[ ] Better error handling
+[ ] Pagination
+[ ] `sia init` to generate a new site and clean up of the initial theme
