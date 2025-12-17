@@ -1,0 +1,39 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<header class="page-header">
+  <h1 class="page-title">Tags</h1>
+  <p class="page-description">Browse all {{ allTags.length }} tags</p>
+</header>
+
+{% if allTags and allTags.length %}
+<div class="tags-page">
+  {% include "tag-list.njk" %}
+  
+  <div class="tags-detail">
+    {% for tag in allTags %}
+    <section class="tag-section" id="{{ tag.slug }}">
+      <h2 class="tag-section-title">
+        <a href="/tags/{{ tag.slug }}/">{{ tag.name }}</a>
+        <span class="tag-section-count">({{ tag.count }})</span>
+      </h2>
+      <ul class="tag-posts">
+        {% for item in tag.items | limit(5) %}
+        <li>
+          <a href="{{ item.url }}">{{ item.title or item.excerpt }}</a>
+          <time datetime="{{ item.date | date('iso') }}">{{ item.date | date('short') }}</time>
+        </li>
+        {% endfor %}
+        {% if tag.count > 5 %}
+        <li><a href="/tags/{{ tag.slug }}/" class="more-link">View all {{ tag.count }} →</a></li>
+        {% endif %}
+      </ul>
+    </section>
+    {% endfor %}
+  </div>
+</div>
+{% else %}
+<p class="empty-message">No tags yet. Add tags to your posts in the front matter.</p>
+{% endif %}
+{% endblock %}
+

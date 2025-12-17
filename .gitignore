@@ -1,2 +1,25 @@
-node_modules
-public
+# Dependencies
+node_modules/
+
+# Output
+dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+

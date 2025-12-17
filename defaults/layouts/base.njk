@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ page.excerpt or site.description }}">
+  <title>{% if title %}{{ title }} | {% endif %}{{ site.title }}</title>
+  
+  <!-- Prevent flash of incorrect theme -->
+  <script>
+    (function() {
+      var saved = localStorage.getItem('theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  
+  <link rel="stylesheet" href="/styles/main.css">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ title or site.title }}">
+  <meta property="og:description" content="{{ page.excerpt or site.description }}">
+  <meta property="og:type" content="{% if page.collection == 'posts' %}article{% else %}website{% endif %}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url or '/' }}">
+  
+  <!-- RSS Feed -->
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed.xml">
+  
+  {% block head %}{% endblock %}
+</head>
+<body>
+  {% include "header.njk" %}
+  
+  <main class="main">
+    {% block content %}{% endblock %}
+  </main>
+  
+  {% include "footer.njk" %}
+</body>
+</html>
+
