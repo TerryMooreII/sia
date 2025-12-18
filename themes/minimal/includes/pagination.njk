@@ -1,0 +1,26 @@
+{% if pagination and pagination.totalPages > 1 %}
+<nav class="pagination" aria-label="Pagination">
+  <div class="pagination-info">
+    Page {{ pagination.pageNumber }} of {{ pagination.totalPages }}
+  </div>
+  
+  <div class="pagination-links">
+    {% if pagination.previousUrl %}
+    <a href="{{ pagination.previousUrl }}" class="pagination-link pagination-prev" aria-label="Previous page">
+      ← Newer
+    </a>
+    {% else %}
+    <span class="pagination-link pagination-prev disabled">← Newer</span>
+    {% endif %}
+    
+    {% if pagination.nextUrl %}
+    <a href="{{ pagination.nextUrl }}" class="pagination-link pagination-next" aria-label="Next page">
+      Older →
+    </a>
+    {% else %}
+    <span class="pagination-link pagination-next disabled">Older →</span>
+    {% endif %}
+  </div>
+</nav>
+{% endif %}
+

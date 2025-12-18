@@ -1,0 +1,42 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<header class="page-header">
+  <h1 class="page-title">Tagged: {{ tag.name }}</h1>
+  <p class="page-description">{{ tag.count }} item{% if tag.count != 1 %}s{% endif %} tagged with "{{ tag.name }}"</p>
+</header>
+
+<div class="post-list">
+  {% for post in posts %}
+  <article class="post-card">
+    <h2 class="post-card-title">
+      <a href="{{ post.url }}">{{ post.title or post.excerpt }}</a>
+      {% if post.draft %}<span class="draft-badge">Draft</span>{% endif %}
+    </h2>
+    <div class="post-card-meta">
+      <time datetime="{{ post.date | date('iso') }}">{{ post.date | date('long') }}</time>
+      {% if post.collection %}
+      <span class="post-card-collection">{{ post.collection }}</span>
+      {% endif %}
+    </div>
+    {% if post.tags and post.tags.length %}
+    <div class="post-card-tags">
+      {% for t in post.tags %}
+      <a href="{{ '/tags/' | url }}{{ t | slug }}/" class="tag tag-sm{% if t | slug == tag.slug %} active{% endif %}">{{ t }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if post.excerpt %}
+    <p class="post-card-excerpt">{{ post.excerpt }}</p>
+    {% endif %}
+  </article>
+  {% endfor %}
+</div>
+
+{% include "pagination.njk" %}
+
+<nav class="page-nav">
+  <a href="{{ '/tags/' | url }}" class="btn btn-secondary">← All Tags</a>
+</nav>
+{% endblock %}
+

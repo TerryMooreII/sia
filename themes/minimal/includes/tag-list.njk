@@ -1,0 +1,11 @@
+{% if allTags and allTags.length %}
+<div class="tag-cloud">
+  {% for tag in allTags %}
+  <a href="{{ '/tags/' | url }}{{ tag.slug }}/" class="tag tag-{{ 'lg' if tag.count > 10 else ('md' if tag.count > 5 else 'sm') }}">
+    {{ tag.name }}
+    <span class="tag-count">({{ tag.count }})</span>
+  </a>
+  {% endfor %}
+</div>
+{% endif %}
+

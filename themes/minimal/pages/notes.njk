@@ -1,0 +1,34 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<header class="page-header">
+  <h1 class="page-title">Notes</h1>
+  <p class="page-description">Short thoughts and quick updates</p>
+</header>
+
+<div class="notes-stream">
+  {% for note in notes %}
+  <article class="note-item">
+    <div class="note-item-content prose">
+      {{ note.content | safe }}
+    </div>
+    <footer class="note-item-footer">
+      <time datetime="{{ note.date | date('iso') }}">{{ note.date | date('full_time') }}</time>
+      {% if note.tags and note.tags.length %}
+      <div class="note-item-tags">
+        {% for tag in note.tags %}
+        <a href="{{ '/tags/' | url }}{{ tag | slug }}/" class="tag tag-sm">{{ tag }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <a href="{{ note.url }}" class="note-item-permalink">Permalink</a>
+    </footer>
+  </article>
+  {% else %}
+  <p class="empty-message">No notes yet. Create your first note with <code>npx sia new note "Quick thought"</code></p>
+  {% endfor %}
+</div>
+
+{% include "pagination.njk" %}
+{% endblock %}
+

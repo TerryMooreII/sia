@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>{{ site.title | safe }}</title>
+    <description>{{ site.description | safe }}</description>
+    <link>{{ site.url | safe }}</link>
+    <atom:link href="{{ site.url | safe }}/feed.xml" rel="self" type="application/rss+xml"/>
+    <language>en-us</language>
+    <lastBuildDate>{{ buildDate | safe }}</lastBuildDate>
+    <generator>Sia Static Site Generator</generator>
+    {% for post in posts | limit(20) %}
+    <item>
+      <title><![CDATA[{{ post.title | safe }}]]></title>
+      <link>{{ site.url | safe }}{{ post.url | safe }}</link>
+      <guid isPermaLink="true">{{ site.url | safe }}{{ post.url | safe }}</guid>
+      <pubDate>{{ post.date | date('rss') }}</pubDate>
+      {% if post.tags and post.tags.length %}
+      {% for tag in post.tags %}
+      <category>{{ tag | safe }}</category>
+      {% endfor %}
+      {% endif %}
+      <description><![CDATA[{{ post.excerpt | safe }}]]></description>
+      <content:encoded><![CDATA[{{ post.content | safe }}]]></content:encoded>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>
+
