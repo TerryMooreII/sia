@@ -131,7 +131,17 @@ pagination:
 
 server:
   port: 3000
+  showDrafts: false  # Set to true to show draft posts in dev server
 ```
+
+### Server Configuration
+
+| Option | Description | Default |
+|-------|-------------|---------|
+| `port` | Port number for development server | `3000` |
+| `showDrafts` | Show draft posts when using `sia dev` | `false` |
+
+When `showDrafts` is set to `true`, draft posts (posts with `draft: true` in front matter) will be included in the development server build. This is useful for previewing draft content locally. Drafts are always excluded from production builds.
 
 ## Front Matter
 
@@ -158,7 +168,7 @@ excerpt: "Custom excerpt text"
 | `tags` | Array of tags |
 | `layout` | Template to use |
 | `permalink` | Custom URL |
-| `draft` | If true, excluded from build |
+| `draft` | If true, excluded from build (unless `server.showDrafts` is enabled) |
 | `excerpt` | Custom excerpt |
 
 ## Markdown Features

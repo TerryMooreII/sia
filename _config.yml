@@ -32,3 +32,4 @@ pagination:
 
 server:
   port: 3000
+  showDrafts: false  # Set to true to show draft posts in dev server
