@@ -23,7 +23,7 @@ You can reach me at:
 
 This site is:
 
-- Generated with [Sia](https://github.com/sia/sia)
+- Generated with [Sia](https://github.com/terrymooreii/sia)
 - Written in Markdown
 - Styled with CSS
 - Hosted on [your hosting provider]

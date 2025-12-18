@@ -19,7 +19,15 @@
     "nunjucks",
     "blog"
   ],
-  "author": "",
+  "author": "Terry Moore II",
+  "homepage": "https://github.com/terrymooreii/sia",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/terrymooreii/sia.git"
+  },
+  "bugs": {
+    "url": "https://github.com/terrymooreii/sia/issues"
+  },
   "license": "MIT",
   "dependencies": {
     "chalk": "^5.3.0",
