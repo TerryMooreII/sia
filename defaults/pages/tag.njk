@@ -21,7 +21,7 @@
     {% if post.tags and post.tags.length %}
     <div class="post-card-tags">
       {% for t in post.tags %}
-      <a href="/tags/{{ t | slug }}/" class="tag tag-sm{% if t | slug == tag.slug %} active{% endif %}">{{ t }}</a>
+      <a href="{{ '/tags/' | url }}{{ t | slug }}/" class="tag tag-sm{% if t | slug == tag.slug %} active{% endif %}">{{ t }}</a>
       {% endfor %}
     </div>
     {% endif %}
@@ -35,7 +35,7 @@
 {% include "pagination.njk" %}
 
 <nav class="page-nav">
-  <a href="/tags/" class="btn btn-secondary">← All Tags</a>
+  <a href="{{ '/tags/' | url }}" class="btn btn-secondary">← All Tags</a>
 </nav>
 {% endblock %}
 

@@ -11,7 +11,7 @@
       <span class="post-meta-divider">·</span>
       <span class="post-tags">
         {% for tag in page.tags %}
-        <a href="/tags/{{ tag | slug }}/" class="tag">{{ tag }}</a>{% if not loop.last %}, {% endif %}
+        <a href="{{ '/tags/' | url }}{{ tag | slug }}/" class="tag">{{ tag }}</a>{% if not loop.last %}, {% endif %}
         {% endfor %}
       </span>
       {% endif %}
@@ -29,13 +29,13 @@
     <div class="post-tags-footer">
       <span class="tags-label">Tagged:</span>
       {% for tag in page.tags %}
-      <a href="/tags/{{ tag | slug }}/" class="tag">{{ tag }}</a>
+      <a href="{{ '/tags/' | url }}{{ tag | slug }}/" class="tag">{{ tag }}</a>
       {% endfor %}
     </div>
     {% endif %}
     
     <nav class="post-nav">
-      <a href="/blog/" class="btn btn-secondary">← Back to Blog</a>
+      <a href="{{ '/blog/' | url }}" class="btn btn-secondary">← Back to Blog</a>
     </nav>
   </footer>
 </article>

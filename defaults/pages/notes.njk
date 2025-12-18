@@ -17,7 +17,7 @@
       {% if note.tags and note.tags.length %}
       <div class="note-item-tags">
         {% for tag in note.tags %}
-        <a href="/tags/{{ tag | slug }}/" class="tag tag-sm">{{ tag }}</a>
+        <a href="{{ '/tags/' | url }}{{ tag | slug }}/" class="tag tag-sm">{{ tag }}</a>
         {% endfor %}
       </div>
       {% endif %}

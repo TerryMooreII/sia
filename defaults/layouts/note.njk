@@ -11,7 +11,7 @@
     {% if page.tags and page.tags.length %}
     <span class="note-tags">
       {% for tag in page.tags %}
-      <a href="/tags/{{ tag | slug }}/" class="tag">{{ tag }}</a>
+      <a href="{{ '/tags/' | url }}{{ tag | slug }}/" class="tag">{{ tag }}</a>
       {% endfor %}
     </span>
     {% endif %}
@@ -19,7 +19,7 @@
 </article>
 
 <nav class="note-nav">
-  <a href="/notes/" class="btn btn-secondary">← All Notes</a>
+  <a href="{{ '/notes/' | url }}" class="btn btn-secondary">← All Notes</a>
 </nav>
 {% endblock %}
 

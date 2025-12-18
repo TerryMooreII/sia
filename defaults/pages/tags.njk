@@ -14,7 +14,7 @@
     {% for tag in allTags %}
     <section class="tag-section" id="{{ tag.slug }}">
       <h2 class="tag-section-title">
-        <a href="/tags/{{ tag.slug }}/">{{ tag.name }}</a>
+        <a href="{{ '/tags/' | url }}{{ tag.slug }}/">{{ tag.name }}</a>
         <span class="tag-section-count">({{ tag.count }})</span>
       </h2>
       <ul class="tag-posts">
@@ -25,7 +25,7 @@
         </li>
         {% endfor %}
         {% if tag.count > 5 %}
-        <li><a href="/tags/{{ tag.slug }}/" class="more-link">View all {{ tag.count }} →</a></li>
+        <li><a href="{{ '/tags/' | url }}{{ tag.slug }}/" class="more-link">View all {{ tag.count }} →</a></li>
         {% endif %}
       </ul>
     </section>
