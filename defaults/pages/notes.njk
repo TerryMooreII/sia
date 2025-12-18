@@ -13,7 +13,7 @@
       {{ note.content | safe }}
     </div>
     <footer class="note-item-footer">
-      <time datetime="{{ note.date | date('iso') }}">{{ note.date | date('full') }}</time>
+      <time datetime="{{ note.date | date('iso') }}">{{ note.date | date('full_time') }}</time>
       {% if note.tags and note.tags.length %}
       <div class="note-item-tags">
         {% for tag in note.tags %}

@@ -11,7 +11,7 @@ A simple, powerful static site generator built with JavaScript. Similar to Eleve
 - **Pagination** - Built-in pagination for listing pages
 - **Image Support** - Automatic image copying and organization
 - **Live Reload** - Development server with hot reloading
-- **Dark Mode** - Built-in light/dark theme with toggle
+- **Themes** - Built-in themes (main, minimal) with light/dark mode toggle
 - **RSS Feed** - Automatic RSS feed generation
 - **YAML/JSON Config** - Flexible configuration options
 
@@ -103,6 +103,8 @@ site:
   description: "A personal blog"
   url: "https://example.com"
   author: "Your Name"
+
+theme: main  # 'main' or 'minimal'
 
 input: src
 output: dist

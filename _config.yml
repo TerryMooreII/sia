@@ -4,6 +4,8 @@ site:
   url: "http://localhost:3000"
   author: "Terry Moore II"
 
+theme: main
+
 input: src
 output: dist
 

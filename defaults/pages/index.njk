@@ -48,7 +48,7 @@
     <article class="note-card">
       <div class="note-card-content">{{ note.excerpt }}</div>
       <footer class="note-card-footer">
-        <time datetime="{{ note.date | date('iso') }}">{{ note.date | date('short') }}</time>
+        <time datetime="{{ note.date | date('iso') }}">{{ note.date | date('full_time') }}</time>
         <a href="{{ note.url }}" class="note-card-link">View →</a>
       </footer>
     </article>

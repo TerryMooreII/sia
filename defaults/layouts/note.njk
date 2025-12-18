@@ -7,7 +7,7 @@
   </div>
   
   <footer class="note-footer">
-    <time datetime="{{ page.date | date('iso') }}">{{ page.date | date('full') }}</time>
+    <time datetime="{{ page.date | date('iso') }}">{{ page.date | date('full_time') }}</time>
     {% if page.tags and page.tags.length %}
     <span class="note-tags">
       {% for tag in page.tags %}
