@@ -1,0 +1,29 @@
+{% if pagination.totalPages > 1 %}
+<nav class="pagination" aria-label="Pagination">
+  {% if pagination.previousUrl %}
+    <a href="{{ pagination.previousUrl }}" class="pagination-link prev">
+      <span class="pagination-arrow">←</span>
+      <span>Newer</span>
+    </a>
+  {% else %}
+    <span class="pagination-link prev disabled">
+      <span class="pagination-arrow">←</span>
+      <span>Newer</span>
+    </span>
+  {% endif %}
+  
+  <span class="pagination-current">{{ pagination.currentPage }} / {{ pagination.totalPages }}</span>
+  
+  {% if pagination.nextUrl %}
+    <a href="{{ pagination.nextUrl }}" class="pagination-link next">
+      <span>Older</span>
+      <span class="pagination-arrow">→</span>
+    </a>
+  {% else %}
+    <span class="pagination-link next disabled">
+      <span>Older</span>
+      <span class="pagination-arrow">→</span>
+    </span>
+  {% endif %}
+</nav>
+{% endif %}

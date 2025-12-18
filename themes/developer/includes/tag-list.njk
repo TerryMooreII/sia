@@ -1,0 +1,7 @@
+{% if tags and tags.length %}
+<div class="tag-list">
+  {% for tag in tags %}
+    <a href="{{ ('/tags/' + (tag | slug) + '/') | url }}" class="tag">#{{ tag }}</a>
+  {% endfor %}
+</div>
+{% endif %}

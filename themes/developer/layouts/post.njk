@@ -1,0 +1,47 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<article class="post-article">
+  <header class="post-header">
+    {% if page.tags %}
+    <div class="post-tags-top">
+      {% for tag in page.tags | limit(2) %}
+        <a href="{{ ('/tags/' + (tag | slug) + '/') | url }}" class="tag-badge">{{ tag }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+    
+    <h1 class="post-title">{{ page.title }}</h1>
+    
+    <div class="post-meta">
+      <div class="author-info">
+        <div class="author-avatar">{{ site.author[0] }}</div>
+        <div class="author-details">
+          <span class="author-name">{{ page.author or site.author }}</span>
+          <span class="post-date">{{ page.date | date('long') }} · {{ content | readingTime }}</span>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  {% if page.image %}
+  <figure class="post-hero">
+    <img src="{{ page.image | url }}" alt="{{ page.title }}">
+  </figure>
+  {% endif %}
+  
+  <div class="post-content prose">
+    {{ content | safe }}
+  </div>
+  
+  {% if page.tags %}
+  <footer class="post-footer">
+    <div class="post-tags">
+      {% for tag in page.tags %}
+        <a href="{{ ('/tags/' + (tag | slug) + '/') | url }}" class="tag">#{{ tag }}</a>
+      {% endfor %}
+    </div>
+  </footer>
+  {% endif %}
+</article>
+{% endblock %}

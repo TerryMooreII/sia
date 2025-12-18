@@ -1,0 +1,31 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<header class="listing-header">
+  <span class="tag-label">Topic</span>
+  <h1 class="listing-title">{{ tag.name }}</h1>
+  <p class="listing-description">{{ tag.count }} article{% if tag.count != 1 %}s{% endif %}</p>
+</header>
+
+<div class="articles-list">
+  {% for post in posts %}
+  <article class="article-row">
+    <div class="article-row-content">
+      <h2 class="row-title">
+        <a href="{{ post.url | url }}">{{ post.title }}</a>
+      </h2>
+      <p class="row-excerpt">{{ post.excerpt | excerpt(180) }}</p>
+      <div class="row-meta">
+        <span class="row-author">{{ post.author or site.author }}</span>
+        <span class="meta-separator">·</span>
+        <time datetime="{{ post.date | date('iso') }}">{{ post.date | date('long') }}</time>
+        <span class="meta-separator">·</span>
+        <span>{{ post.content | readingTime }}</span>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+
+{% include "pagination.njk" %}
+{% endblock %}

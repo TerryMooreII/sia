@@ -1,0 +1,25 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<article class="note">
+  <header class="note-header">
+    <time class="note-timestamp" datetime="{{ page.date | date('iso') }}">
+      {{ page.date | date('full_time') }}
+    </time>
+  </header>
+  
+  <div class="note-body prose">
+    {{ content | safe }}
+  </div>
+  
+  {% if page.tags %}
+  <footer class="note-footer">
+    <div class="note-tags">
+      {% for tag in page.tags %}
+        <a href="{{ ('/tags/' + (tag | slug) + '/') | url }}" class="tag">{{ tag }}</a>
+      {% endfor %}
+    </div>
+  </footer>
+  {% endif %}
+</article>
+{% endblock %}

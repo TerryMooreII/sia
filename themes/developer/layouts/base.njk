@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include "meta.njk" %}
+  {% include "theme-script.njk" %}
+  
+  <link rel="stylesheet" href="{{ '/styles/main.css' | url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <div class="app-layout">
+    {% include "sidebar.njk" %}
+    
+    <div class="main-wrapper">
+      {% include "header.njk" %}
+      
+      <main class="main-content">
+        {% block content %}{% endblock %}
+      </main>
+      
+      {% include "footer.njk" %}
+    </div>
+  </div>
+</body>
+</html>

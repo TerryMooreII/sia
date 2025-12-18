@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include "meta.njk" %}
+  {% include "theme-script.njk" %}
+  
+  <link rel="stylesheet" href="{{ '/styles/main.css' | url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
+  
+  {% block head %}{% endblock %}
+</head>
+<body>
+  {% include "header.njk" %}
+  
+  <main class="main">
+    {% block content %}{% endblock %}
+  </main>
+  
+  {% include "footer.njk" %}
+</body>
+</html>

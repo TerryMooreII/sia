@@ -1,0 +1,65 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<div class="home-page">
+  <section class="hero-section">
+    <h1 class="hero-title">{{ site.title }}</h1>
+    <p class="hero-description">{{ site.description }}</p>
+  </section>
+  
+  <section class="posts-section">
+    <div class="section-header">
+      <h2 class="section-title">Latest Posts</h2>
+      <a href="{{ '/blog/' | url }}" class="view-all-link">View all posts →</a>
+    </div>
+    
+    <div class="post-cards">
+      {% for post in collections.posts | limit(6) %}
+      <article class="post-card">
+        <div class="card-content">
+          {% if post.tags %}
+          <div class="card-tags">
+            {% for tag in post.tags | limit(2) %}
+              <span class="tag-small">#{{ tag }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+          
+          <h3 class="card-title">
+            <a href="{{ post.url | url }}">{{ post.title }}</a>
+          </h3>
+          
+          <p class="card-excerpt">{{ post.excerpt | excerpt(120) }}</p>
+          
+          <div class="card-meta">
+            <span class="card-date">{{ post.date | date('short') }}</span>
+            <span class="card-reading-time">{{ post.content | readingTime }}</span>
+          </div>
+        </div>
+      </article>
+      {% else %}
+      <p class="no-posts">No posts yet. Create your first post!</p>
+      {% endfor %}
+    </div>
+  </section>
+  
+  {% if collections.notes.length %}
+  <section class="notes-section">
+    <div class="section-header">
+      <h2 class="section-title">Recent Notes</h2>
+      <a href="{{ '/notes/' | url }}" class="view-all-link">View all notes →</a>
+    </div>
+    
+    <div class="notes-list">
+      {% for note in collections.notes | limit(3) %}
+      <article class="note-card">
+        <time class="note-time">{{ note.date | date('short') }}</time>
+        <div class="note-preview">{{ note.excerpt | excerpt(150) }}</div>
+        <a href="{{ note.url | url }}" class="note-link">Read more →</a>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</div>
+{% endblock %}

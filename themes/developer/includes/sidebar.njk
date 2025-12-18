@@ -1,0 +1,60 @@
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <a href="{{ '/' | url }}" class="sidebar-logo">
+      <span class="logo-icon">{{ site.title[0] }}</span>
+      <span class="logo-text">{{ site.title }}</span>
+    </a>
+  </div>
+  
+  <nav class="sidebar-nav">
+    <a href="{{ '/' | url }}" class="nav-item {% if page.url == '/' %}active{% endif %}">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <span>Home</span>
+    </a>
+    <a href="{{ '/blog/' | url }}" class="nav-item {% if page.url and '/blog' in page.url %}active{% endif %}">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+        <line x1="16" y1="13" x2="8" y2="13"></line>
+        <line x1="16" y1="17" x2="8" y2="17"></line>
+      </svg>
+      <span>Posts</span>
+    </a>
+    <a href="{{ '/notes/' | url }}" class="nav-item {% if page.url and '/notes' in page.url %}active{% endif %}">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="2" x2="22" y2="6"></line>
+        <path d="M7.5 20.5L19 9l-4-4L3.5 16.5 2 22z"></path>
+      </svg>
+      <span>Notes</span>
+    </a>
+    <a href="{{ '/tags/' | url }}" class="nav-item {% if page.url and '/tags' in page.url %}active{% endif %}">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+        <line x1="7" y1="7" x2="7.01" y2="7"></line>
+      </svg>
+      <span>Tags</span>
+    </a>
+    <a href="{{ '/about/' | url }}" class="nav-item {% if page.url and '/about' in page.url %}active{% endif %}">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="16" x2="12" y2="12"></line>
+        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+      </svg>
+      <span>About</span>
+    </a>
+  </nav>
+  
+  <div class="sidebar-footer">
+    <a href="{{ '/feed.xml' | url }}" class="nav-item">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 11a9 9 0 0 1 9 9"></path>
+        <path d="M4 4a16 16 0 0 1 16 16"></path>
+        <circle cx="5" cy="19" r="1"></circle>
+      </svg>
+      <span>RSS Feed</span>
+    </a>
+  </div>
+</aside>

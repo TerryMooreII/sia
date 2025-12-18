@@ -1,0 +1,38 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<div class="notes-page">
+  <header class="page-header">
+    <h1 class="page-title">Notes</h1>
+    <p class="page-description">Quick thoughts and snippets</p>
+  </header>
+  
+  <div class="notes-timeline">
+    {% for note in notes %}
+    <article class="timeline-item">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        <time class="timeline-date" datetime="{{ note.date | date('iso') }}">
+          {{ note.date | date('full') }}
+        </time>
+        <div class="timeline-body">
+          <div class="note-text">{{ note.excerpt | excerpt(200) }}</div>
+          <a href="{{ note.url | url }}" class="read-more">Continue reading →</a>
+        </div>
+        {% if note.tags %}
+        <div class="timeline-tags">
+          {% for tag in note.tags %}
+            <a href="{{ ('/tags/' + (tag | slug) + '/') | url }}" class="tag-small">#{{ tag }}</a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </article>
+    {% else %}
+    <p class="no-notes">No notes yet.</p>
+    {% endfor %}
+  </div>
+  
+  {% include "pagination.njk" %}
+</div>
+{% endblock %}

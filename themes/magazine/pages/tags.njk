@@ -1,0 +1,19 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<header class="listing-header">
+  <h1 class="listing-title">Topics</h1>
+  <p class="listing-description">Explore articles by topic</p>
+</header>
+
+<div class="topics-grid">
+  {% for tag in allTags %}
+  <a href="{{ ('/tags/' + tag.slug + '/') | url }}" class="topic-card">
+    <span class="topic-name">{{ tag.name }}</span>
+    <span class="topic-count">{{ tag.count }} article{% if tag.count != 1 %}s{% endif %}</span>
+  </a>
+  {% else %}
+  <p class="empty-state">No topics yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<div class="tag-page">
+  <header class="page-header">
+    <span class="tag-badge large">#{{ tag.name }}</span>
+    <p class="page-description">{{ tag.count }} post{% if tag.count != 1 %}s{% endif %} tagged with "{{ tag.name }}"</p>
+  </header>
+  
+  <div class="post-cards">
+    {% for post in posts %}
+    <article class="post-card">
+      <div class="card-content">
+        {% if post.tags %}
+        <div class="card-tags">
+          {% for t in post.tags | limit(2) %}
+            <span class="tag-small">#{{ t }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        
+        <h2 class="card-title">
+          <a href="{{ post.url | url }}">{{ post.title }}</a>
+        </h2>
+        
+        <p class="card-excerpt">{{ post.excerpt | excerpt(150) }}</p>
+        
+        <div class="card-meta">
+          <span class="card-date">{{ post.date | date('short') }}</span>
+          <span class="card-reading-time">{{ post.content | readingTime }}</span>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  
+  {% include "pagination.njk" %}
+</div>
+{% endblock %}

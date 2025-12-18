@@ -1,0 +1,79 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">{{ site.title }}</h1>
+    <p class="hero-subtitle">{{ site.description }}</p>
+  </div>
+</section>
+
+{% set featuredPost = collections.posts[0] %}
+{% if featuredPost %}
+<section class="featured-section">
+  <article class="featured-article">
+    <div class="featured-content">
+      {% if featuredPost.tags %}
+      <span class="featured-category">{{ featuredPost.tags[0] }}</span>
+      {% endif %}
+      <h2 class="featured-title">
+        <a href="{{ featuredPost.url | url }}">{{ featuredPost.title }}</a>
+      </h2>
+      <p class="featured-excerpt">{{ featuredPost.excerpt | excerpt(200) }}</p>
+      <div class="featured-meta">
+        <span class="featured-author">{{ featuredPost.author or site.author }}</span>
+        <span class="featured-date">{{ featuredPost.date | date('long') }}</span>
+        <span class="featured-reading">{{ featuredPost.content | readingTime }}</span>
+      </div>
+    </div>
+  </article>
+</section>
+{% endif %}
+
+<section class="latest-section">
+  <div class="section-header">
+    <h2 class="section-title">Latest Articles</h2>
+    <a href="{{ '/blog/' | url }}" class="section-link">View all →</a>
+  </div>
+  
+  <div class="articles-grid">
+    {% for post in collections.posts | skip(1) | limit(6) %}
+    <article class="article-card">
+      <div class="card-content">
+        {% if post.tags %}
+        <span class="card-category">{{ post.tags[0] }}</span>
+        {% endif %}
+        <h3 class="card-title">
+          <a href="{{ post.url | url }}">{{ post.title }}</a>
+        </h3>
+        <p class="card-excerpt">{{ post.excerpt | excerpt(100) }}</p>
+        <div class="card-meta">
+          <time datetime="{{ post.date | date('iso') }}">{{ post.date | date('short') }}</time>
+          <span>·</span>
+          <span>{{ post.content | readingTime }}</span>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+{% if collections.notes.length %}
+<section class="notes-section">
+  <div class="section-header">
+    <h2 class="section-title">Recent Notes</h2>
+    <a href="{{ '/notes/' | url }}" class="section-link">View all →</a>
+  </div>
+  
+  <div class="notes-feed">
+    {% for note in collections.notes | limit(3) %}
+    <article class="note-preview">
+      <time datetime="{{ note.date | date('iso') }}">{{ note.date | date('short') }}</time>
+      <p>{{ note.excerpt | excerpt(150) }}</p>
+      <a href="{{ note.url | url }}" class="note-link">Read note →</a>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+{% endblock %}

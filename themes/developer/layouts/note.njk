@@ -1,0 +1,21 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<article class="note-article">
+  <header class="note-header">
+    <time class="note-date" datetime="{{ page.date | date('iso') }}">
+      {{ page.date | date('full') }}
+    </time>
+  </header>
+  
+  <div class="note-content prose">
+    {{ content | safe }}
+  </div>
+  
+  {% if page.tags %}
+  <footer class="note-footer">
+    {% include "tag-list.njk" %}
+  </footer>
+  {% endif %}
+</article>
+{% endblock %}

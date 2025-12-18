@@ -1,0 +1,32 @@
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <a href="{{ '/' | url }}" class="footer-logo">{{ site.title }}</a>
+      <p class="footer-tagline">{{ site.description }}</p>
+    </div>
+    
+    <div class="footer-links">
+      <div class="footer-column">
+        <h4 class="footer-heading">Navigate</h4>
+        <nav class="footer-nav">
+          <a href="{{ '/' | url }}">Home</a>
+          <a href="{{ '/blog/' | url }}">Articles</a>
+          <a href="{{ '/notes/' | url }}">Notes</a>
+          <a href="{{ '/about/' | url }}">About</a>
+        </nav>
+      </div>
+      
+      <div class="footer-column">
+        <h4 class="footer-heading">Subscribe</h4>
+        <nav class="footer-nav">
+          <a href="{{ '/feed.xml' | url }}">RSS Feed</a>
+          <a href="{{ '/tags/' | url }}">Browse Tags</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>&copy; {{ "now" | date("year") }} {{ site.title }}. Crafted with <a href="https://github.com/terrymooreii/sia">Sia</a>.</p>
+  </div>
+</footer>
