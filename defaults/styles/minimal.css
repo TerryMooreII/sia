@@ -796,6 +796,44 @@ img {
   border-radius: var(--radius-md);
 }
 
+/* YouTube Embed Styles */
+.prose .youtube-embed {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  margin: 1.25em 0;
+  border-radius: var(--radius-md);
+}
+
+.prose .youtube-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Giphy Embed Styles */
+.prose .giphy-embed {
+  position: relative;
+  padding-bottom: 100%; /* Giphy embeds are typically square */
+  height: 0;
+  overflow: hidden;
+  margin: 1.25em 0;
+  border-radius: var(--radius-md);
+}
+
+.prose .giphy-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 .prose a {
   text-decoration: underline;
   text-decoration-color: var(--color-border);

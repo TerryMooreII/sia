@@ -258,6 +258,55 @@ Plain URLs are automatically converted to clickable links:
 Visit https://example.com for more info.
 ```
 
+### Media Embeds
+
+Sia automatically converts YouTube and Giphy URLs into responsive embeds.
+
+#### YouTube Videos
+
+YouTube videos can be embedded using any of these methods:
+
+**As a markdown link:**
+```markdown
+[Watch this video](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+```
+
+**As a plain URL (auto-linked):**
+```markdown
+https://www.youtube.com/watch?v=dQw4w9WgXcQ
+```
+
+**Using short URL format:**
+```markdown
+https://youtu.be/dQw4w9WgXcQ
+```
+
+All of these formats are automatically converted to responsive YouTube embeds.
+
+#### Giphy GIFs
+
+Giphy GIFs can be embedded in two ways:
+
+**As a direct image link (standard markdown):**
+```markdown
+![Alt text](https://media.giphy.com/media/ID/giphy.gif)
+```
+
+**As a Giphy share URL (auto-embedded):**
+```markdown
+[Check this out](https://giphy.com/gifs/ID)
+```
+
+Or just paste the URL:
+```markdown
+https://giphy.com/gifs/ID
+```
+
+Giphy share URLs are automatically converted to responsive embeds. Supported formats include:
+- `https://giphy.com/gifs/ID`
+- `https://gph.is/g/ID`
+- `https://giphy.com/embed/ID`
+
 ### GitHub Flavored Markdown
 
 Full GFM support including:
