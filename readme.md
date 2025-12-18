@@ -4,6 +4,7 @@ A simple, powerful static site generator built with JavaScript. Similar to Eleve
 
 ## Features
 
+- **Enhanced Markdown** - Syntax highlighting, emoji support, footnotes, alert boxes, auto-linkify, and more
 - **Markdown & Front Matter** - Write content in markdown with YAML front matter
 - **Nunjucks Templates** - Flexible templating with includes and layouts
 - **Multiple Content Types** - Blog posts, pages, and notes (tweet-like short posts)
@@ -159,6 +160,102 @@ excerpt: "Custom excerpt text"
 | `permalink` | Custom URL |
 | `draft` | If true, excluded from build |
 | `excerpt` | Custom excerpt |
+
+## Markdown Features
+
+Sia supports enhanced markdown features beyond standard markdown:
+
+### Syntax Highlighting
+
+Code blocks are automatically highlighted using Highlight.js:
+
+````markdown
+```javascript
+function hello() {
+  console.log("Hello, world!");
+}
+```
+````
+
+### Emoji Support
+
+Use emoji shortcodes in your markdown:
+
+```markdown
+:smile: :rocket: :heart: :thumbsup:
+```
+
+Common emojis: `:smile:`, `:heart:`, `:thumbsup:`, `:fire:`, `:rocket:`, `:star:`, `:check:`, `:warning:`, and many more.
+
+### Heading IDs
+
+All headings automatically get ID attributes for anchor links:
+
+```markdown
+## My Heading
+```
+
+Becomes: `<h2 id="my-heading">My Heading</h2>`
+
+You can link to headings within the same document:
+
+```markdown
+[Link to My Heading](#my-heading)
+```
+
+### Footnotes
+
+Add footnotes to your content:
+
+```markdown
+This is a sentence with a footnote[^1].
+
+[^1]: This is the footnote content.
+```
+
+### Typography Enhancements
+
+Smart typography automatically converts:
+
+- Straight quotes (`"` and `'`) to curly quotes (`"` `"` `'` `'`)
+- Double hyphens (`--`) to en-dash (`–`)
+- Triple hyphens (`---`) to em-dash (`—`)
+- Three dots (`...`) to ellipsis (`…`)
+
+### Alert Boxes
+
+Create GitHub Flavored Markdown-style alert boxes:
+
+```markdown
+> [!NOTE]
+> This is a note alert.
+
+> [!TIP]
+> This is a tip alert.
+
+> [!WARNING]
+> This is a warning alert.
+
+> [!CAUTION]
+> This is a caution alert.
+```
+
+### Auto-Linkify
+
+Plain URLs are automatically converted to clickable links:
+
+```markdown
+Visit https://example.com for more info.
+```
+
+### GitHub Flavored Markdown
+
+Full GFM support including:
+
+- Tables
+- Task lists (`- [ ]` and `- [x]`)
+- Strikethrough (`~~text~~`)
+- And more
 
 ## Templates
 
