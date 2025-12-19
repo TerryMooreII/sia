@@ -17,7 +17,7 @@
         </time>
         <div class="timeline-body">
           <div class="note-text">{{ note.excerpt | excerpt(200) }}</div>
-          <a href="{{ note.url | url }}" class="read-more">Continue reading →</a>
+          <a href="{{ note.url }}" class="read-more">Continue reading →</a>
         </div>
         {% if note.tags %}
         <div class="timeline-tags">

@@ -26,7 +26,7 @@
           {% endif %}
           
           <h3 class="card-title">
-            <a href="{{ post.url | url }}">{{ post.title }}</a>
+            <a href="{{ post.url }}">{{ post.title }}</a>
           </h3>
           
           <p class="card-excerpt">{{ post.excerpt | excerpt(120) }}</p>
@@ -55,7 +55,7 @@
       <article class="note-card">
         <time class="note-time">{{ note.date | date('short') }}</time>
         <div class="note-preview">{{ note.excerpt | excerpt(150) }}</div>
-        <a href="{{ note.url | url }}" class="note-link">Read more →</a>
+        <a href="{{ note.url }}" class="note-link">Read more →</a>
       </article>
       {% endfor %}
     </div>
