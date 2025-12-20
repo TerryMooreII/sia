@@ -86,7 +86,8 @@ site:
   url: "https://example.com"
   author: "Your Name"
 
-theme: main  # Options: main, minimal, developer, magazine
+theme:
+  name: main  # Options: main, minimal, developer, magazine
 
 input: src
 output: dist

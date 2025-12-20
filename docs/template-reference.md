@@ -44,7 +44,8 @@ The full configuration object including all settings:
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `config.theme` | string | Current theme name |
+| `config.theme` | object | Theme configuration object |
+| `config.theme.name` | string | Current theme name |
 | `config.input` | string | Input directory name |
 | `config.output` | string | Output directory name |
 | `config.collections` | object | Collection configurations |

@@ -33,8 +33,11 @@ Sia themes control the visual appearance and structure of your site. A theme con
 Set your theme in `_config.yml`:
 
 ```yaml
-theme: minimal  # Options: main, minimal, developer, magazine
+theme:
+  name: minimal  # Options: main, minimal, developer, magazine
 ```
+
+The theme configuration is an object that allows for additional theme-specific options in the future.
 
 ---
 

@@ -105,7 +105,8 @@ site:
   url: "https://example.com"
   author: "Your Name"
 
-theme: main  # 'main' or 'minimal'
+theme:
+  name: main  # Options: main, minimal, developer, magazine
 
 input: src
 output: dist

@@ -1,12 +1,14 @@
 {% extends "base.njk" %}
 
 {% block content %}
+{% if config.theme.showHero %}
 <section class="hero">
   <div class="hero-content">
     <h1 class="hero-title">{{ site.title }}</h1>
     <p class="hero-subtitle">{{ site.description }}</p>
   </div>
 </section>
+{% endif %}
 
 {% set featuredPost = collections.posts[0] %}
 {% if featuredPost %}
@@ -17,7 +19,7 @@
       <span class="featured-category">{{ featuredPost.tags[0] }}</span>
       {% endif %}
       <h2 class="featured-title">
-        <a href="{{ featuredPost.url }}">{{ featuredPost.title }}</a>
+        <a href="{{ featuredPost.url | url }}">{{ featuredPost.title }}</a>
       </h2>
       <p class="featured-excerpt">{{ featuredPost.excerpt | excerpt(200) }}</p>
       <div class="featured-meta">
@@ -44,7 +46,7 @@
         <span class="card-category">{{ post.tags[0] }}</span>
         {% endif %}
         <h3 class="card-title">
-          <a href="{{ post.url }}">{{ post.title }}</a>
+          <a href="{{ post.url | url }}">{{ post.title }}</a>
         </h3>
         <p class="card-excerpt">{{ post.excerpt | excerpt(100) }}</p>
         <div class="card-meta">
@@ -70,7 +72,7 @@
     <article class="note-preview">
       <time datetime="{{ note.date | date('iso') }}">{{ note.date | date('short') }}</time>
       <p>{{ note.excerpt | excerpt(150) }}</p>
-      <a href="{{ note.url }}" class="note-link">Read note →</a>
+      <a href="{{ note.url | url }}" class="note-link">Read note →</a>
     </article>
     {% endfor %}
   </div>
