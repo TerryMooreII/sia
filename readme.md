@@ -12,7 +12,8 @@ A simple, powerful static site generator built with JavaScript. Similar to Eleve
 - **Pagination** - Built-in pagination for listing pages
 - **Image Support** - Automatic image copying and organization
 - **Live Reload** - Development server with hot reloading
-- **Themes** - Built-in themes (main, minimal) with light/dark mode toggle
+- **Themes** - Built-in themes (main, minimal, developer, magazine) with light/dark mode toggle
+- **Custom Themes** - Create and share themes as npm packages (`sia-theme-*`)
 - **RSS Feed** - Automatic RSS feed generation
 - **YAML/JSON Config** - Flexible configuration options
 
@@ -391,7 +392,54 @@ sia build --clean
 sia new post "Title"
 sia new page "Title"
 sia new note "Content"
+
+# Create a new theme package
+sia theme my-theme
+sia theme my-theme --quick  # Skip prompts
 ```
+
+## Custom Theme Packages
+
+Sia supports external themes distributed as npm packages. Theme packages must be named `sia-theme-{name}`.
+
+### Using an External Theme
+
+```bash
+# Install the theme package
+npm install sia-theme-awesome
+
+# Configure in _config.yml
+```
+
+```yaml
+theme:
+  name: awesome  # Uses sia-theme-awesome package
+```
+
+Sia resolves themes in this order:
+1. Built-in themes (`main`, `minimal`, `developer`, `magazine`)
+2. npm packages matching `sia-theme-{name}`
+
+### Creating a Theme Package
+
+```bash
+# Generate a new theme scaffold
+sia theme my-theme
+
+# This creates sia-theme-my-theme/ with:
+# - package.json (properly configured)
+# - README.md (documentation template)
+# - layouts/, includes/, pages/, styles/
+```
+
+After customizing, publish to npm:
+
+```bash
+cd sia-theme-my-theme
+npm publish
+```
+
+See [Creating Themes](docs/creating-themes.md) for detailed documentation.
 
 ## Upgrading
 

@@ -14,6 +14,7 @@ import { devCommand } from '../lib/server.js';
 import { buildCommand } from '../lib/build.js';
 import { newCommand } from '../lib/new.js';
 import { initCommand } from '../lib/init.js';
+import { themeCommand } from '../lib/theme.js';
 
 program
   .name('sia')
@@ -46,6 +47,12 @@ program
   .option('-t, --tags <tags>', 'Comma-separated tags')
   .option('-d, --draft', 'Save as draft (posts only)')
   .action(newCommand);
+
+program
+  .command('theme <name>')
+  .description('Create a new Sia theme package')
+  .option('-q, --quick', 'Skip prompts and use defaults')
+  .action(themeCommand);
 
 program.parse();
 

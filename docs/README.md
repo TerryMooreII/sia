@@ -56,6 +56,7 @@ npm run build
 - **Image Support** - Automatic image copying and organization
 - **Live Reload** - Development server with hot reloading
 - **Multiple Themes** - Built-in themes (main, minimal, developer, magazine) with light/dark mode
+- **Custom Theme Packages** - Create and share themes as npm packages (`sia-theme-*`)
 - **RSS Feed** - Automatic RSS feed generation
 - **SEO Ready** - Open Graph and Twitter Card meta tags included
 
@@ -87,7 +88,8 @@ site:
   author: "Your Name"
 
 theme:
-  name: main  # Options: main, minimal, developer, magazine
+  name: main  # Built-in: main, minimal, developer, magazine
+              # Or use external: my-theme (loads sia-theme-my-theme)
 
 input: src
 output: dist
@@ -126,6 +128,7 @@ server:
 | `sia new post "Title"` | Create a new blog post |
 | `sia new page "Title"` | Create a new page |
 | `sia new note "Content"` | Create a new note |
+| `sia theme <name>` | Create a new theme package |
 
 ## License
 

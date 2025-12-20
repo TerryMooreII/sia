@@ -1,6 +1,6 @@
 # Creating Themes
 
-This guide explains how to create custom themes for Sia and how to customize existing themes.
+This guide explains how to create custom themes for Sia, distribute them as npm packages, and customize existing themes.
 
 ## Table of Contents
 
@@ -13,6 +13,9 @@ This guide explains how to create custom themes for Sia and how to customize exi
 - [Styles](#styles)
 - [Shared Includes](#shared-includes)
 - [Dark Mode Support](#dark-mode-support)
+- [External Theme Packages](#external-theme-packages)
+- [Creating a Theme Package](#creating-a-theme-package)
+- [Publishing Your Theme](#publishing-your-theme)
 - [Customizing Existing Themes](#customizing-existing-themes)
 - [Built-in Themes](#built-in-themes)
 - [Best Practices](#best-practices)
@@ -646,6 +649,218 @@ toggle.addEventListener('click', () => {
   setTheme(current === 'dark' ? 'light' : 'dark');
 });
 ```
+
+---
+
+## External Theme Packages
+
+Sia supports distributing themes as npm packages, making it easy to share themes with the community.
+
+### How Theme Resolution Works
+
+When Sia loads a theme, it follows this resolution order:
+
+1. **Built-in themes** - First checks the `themes/` folder in the Sia package
+2. **npm packages** - If not found, looks for `sia-theme-{name}` in your `package.json` dependencies
+3. **Fallback** - Falls back to the "main" theme if nothing is found
+
+### Using an External Theme
+
+To use an external theme in your Sia site:
+
+```bash
+# Install the theme package
+npm install sia-theme-awesome
+```
+
+Then configure it in your `_config.yml`:
+
+```yaml
+theme:
+  name: awesome  # Sia will look for sia-theme-awesome
+```
+
+That's it! Sia automatically detects and uses the theme from `node_modules`.
+
+### Theme Package Requirements
+
+External theme packages must:
+
+1. **Follow naming convention** - Package name must be `sia-theme-{name}`
+2. **Export theme directory** - Include an `index.js` that exports the theme path
+3. **Include required files** - Have `layouts/` and `pages/` directories (minimum)
+4. **Follow theme structure** - Match the same structure as built-in themes
+
+---
+
+## Creating a Theme Package
+
+### Using the Theme Generator
+
+The easiest way to create a new theme is with the built-in generator:
+
+```bash
+sia theme my-awesome-theme
+```
+
+This creates a complete theme package with all necessary files:
+
+```
+sia-theme-my-awesome-theme/
+├── package.json          # npm package configuration
+├── index.js              # Exports theme directory path
+├── README.md             # Theme documentation
+├── layouts/
+│   ├── base.njk          # Base HTML template
+│   ├── post.njk          # Blog post layout
+│   ├── page.njk          # Static page layout
+│   └── note.njk          # Note layout
+├── includes/
+│   ├── header.njk        # Site header/navigation
+│   ├── footer.njk        # Site footer
+│   ├── hero.njk          # Homepage hero section
+│   ├── pagination.njk    # Pagination component
+│   └── tag-list.njk      # Tag cloud component
+├── pages/
+│   ├── index.njk         # Homepage
+│   ├── blog.njk          # Blog listing
+│   ├── notes.njk         # Notes listing
+│   ├── tags.njk          # All tags page
+│   ├── tag.njk           # Single tag page
+│   └── feed.njk          # RSS feed
+└── styles/
+    └── main.css          # Theme styles
+```
+
+### Generator Options
+
+```bash
+# Interactive mode (prompts for details)
+sia theme my-theme
+
+# Quick mode (skip prompts, use defaults)
+sia theme my-theme --quick
+sia theme my-theme -q
+```
+
+### package.json Structure
+
+The generated `package.json` includes:
+
+```json
+{
+  "name": "sia-theme-my-theme",
+  "version": "1.0.0",
+  "description": "My Theme theme for Sia static site generator",
+  "main": "index.js",
+  "type": "module",
+  "keywords": [
+    "sia",
+    "sia-theme",
+    "static-site",
+    "theme"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "peerDependencies": {
+    "@terrymooreii/sia": ">=2.0.0"
+  }
+}
+```
+
+### index.js Structure
+
+The `index.js` exports the theme directory for Sia to locate:
+
+```javascript
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Export the theme directory path for Sia to use
+export const themeDir = __dirname;
+export default themeDir;
+```
+
+### Manual Theme Creation
+
+If you prefer to create a theme manually:
+
+1. Create a new directory: `mkdir sia-theme-my-theme`
+2. Initialize npm: `npm init`
+3. Set the package name to `sia-theme-{name}`
+4. Create the required directory structure
+5. Add an `index.js` that exports the directory path
+6. Add all required template files
+
+---
+
+## Publishing Your Theme
+
+### Preparing for Publication
+
+1. **Test locally** - Link your theme and test with a Sia site:
+
+   ```bash
+   # In your theme directory
+   npm link
+   
+   # In a Sia site directory
+   npm link sia-theme-my-theme
+   ```
+
+2. **Update package.json** - Add repository, bugs, and homepage URLs:
+
+   ```json
+   {
+     "repository": {
+       "type": "git",
+       "url": "https://github.com/username/sia-theme-my-theme.git"
+     },
+     "bugs": {
+       "url": "https://github.com/username/sia-theme-my-theme/issues"
+     },
+     "homepage": "https://github.com/username/sia-theme-my-theme#readme"
+   }
+   ```
+
+3. **Write documentation** - Update the README with:
+   - Screenshots of the theme
+   - Installation instructions
+   - Configuration options
+   - Customization tips
+
+### Publishing to npm
+
+```bash
+# Login to npm (if not already)
+npm login
+
+# Publish the package
+npm publish
+
+# Or publish with public access if scoped
+npm publish --access public
+```
+
+### Versioning
+
+Follow semantic versioning:
+
+- **Patch** (1.0.1) - Bug fixes, minor style tweaks
+- **Minor** (1.1.0) - New features, backward-compatible changes
+- **Major** (2.0.0) - Breaking changes to templates or configuration
+
+### Theme Discovery
+
+To help users find your theme:
+
+1. Use `sia-theme` in your npm keywords
+2. Add a clear description
+3. Include screenshots in your README
+4. Consider creating a demo site
 
 ---
 
