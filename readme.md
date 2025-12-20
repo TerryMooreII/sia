@@ -1,4 +1,4 @@
-~[Sia](./docs/imgs/logo-sia.png)
+![Sia](./docs/imgs/logo-sia-t.png)
 # Sia
 
 A simple, powerful static site generator built with JavaScript. Similar to Eleventy/11ty, Sia supports markdown, front matter, Nunjucks templates, and more.
