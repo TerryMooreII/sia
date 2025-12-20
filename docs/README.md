@@ -54,6 +54,7 @@ npm run build
 - **Tags & Categories** - Organize content with tags and auto-generated tag pages
 - **Pagination** - Built-in pagination for listing pages
 - **Image Support** - Automatic image copying and organization
+- **Static Assets** - Support for favicons, fonts, and other static files
 - **Live Reload** - Development server with hot reloading
 - **Multiple Themes** - Built-in themes (main, minimal, developer, magazine) with light/dark mode
 - **Custom Theme Packages** - Create and share themes as npm packages (`sia-theme-*`)
@@ -70,6 +71,10 @@ my-site/
 │   ├── pages/           # Static pages
 │   ├── notes/           # Short notes/tweets
 │   └── images/          # Images
+├── assets/              # Static assets (optional)
+├── static/              # Static assets (optional)
+├── public/              # Static assets (optional)
+├── favicon.ico          # Site favicon (optional)
 ├── _layouts/            # Custom layouts (optional)
 ├── _includes/           # Custom includes (optional)
 ├── styles/              # Custom CSS (optional)
@@ -116,6 +121,58 @@ pagination:
 server:
   port: 3000
   showDrafts: false
+```
+
+## Static Assets
+
+Sia automatically copies static assets during the build process. You can place static files in any of these locations:
+
+- **`assets/`** - Place files in `assets/` at the project root
+- **`static/`** - Place files in `static/` at the project root
+- **`public/`** - Place files in `public/` at the project root
+- **Root directory** - Place `favicon.ico` directly in the project root
+
+All files from these directories will be copied to the `dist/` folder during build, preserving their directory structure.
+
+### Supported File Types
+
+Static assets include:
+- **Favicons** - `.ico` files (favicon.ico can be in root or asset directories)
+- **Fonts** - `.woff`, `.woff2`, `.ttf`, `.eot`
+- **Documents** - `.pdf`, `.txt`, `.json`, `.xml`
+- **Scripts** - `.js` files
+- **Stylesheets** - `.css` files (though custom CSS is better placed in `styles/`)
+- **Images** - All image formats (though images are better placed in `src/images/`)
+
+### Example Structure
+
+```
+my-site/
+├── assets/
+│   ├── favicon.ico
+│   ├── robots.txt
+│   ├── manifest.json
+│   └── fonts/
+│       └── custom-font.woff2
+├── static/
+│   └── documents/
+│       └── resume.pdf
+└── favicon.ico  # Also supported in root
+```
+
+During build, these will be copied to:
+```
+dist/
+├── assets/
+│   ├── favicon.ico
+│   ├── robots.txt
+│   ├── manifest.json
+│   └── fonts/
+│       └── custom-font.woff2
+├── static/
+│   └── documents/
+│       └── resume.pdf
+└── favicon.ico
 ```
 
 ## CLI Commands
