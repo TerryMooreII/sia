@@ -1,14 +1,7 @@
 {% extends "base.njk" %}
 
 {% block content %}
-{% if config.theme.showHero %}
-<section class="hero">
-  <div class="hero-content">
-    <h1 class="hero-title">{{ site.title }}</h1>
-    <p class="hero-subtitle">{{ site.description }}</p>
-  </div>
-</section>
-{% endif %}
+{% include "hero.njk" %}
 
 {% set featuredPost = collections.posts[0] %}
 {% if featuredPost %}

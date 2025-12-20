@@ -55,6 +55,7 @@ themes/your-theme/
 ├── includes/
 │   ├── header.njk        # Site header/navigation
 │   ├── footer.njk        # Site footer
+│   ├── hero.njk          # Homepage hero section
 │   ├── pagination.njk    # Pagination component
 │   └── tag-list.njk      # Tag cloud/list component
 ├── pages/
@@ -98,6 +99,7 @@ themes/your-theme/
 |------|---------|
 | `header.njk` | Site header and navigation |
 | `footer.njk` | Site footer |
+| `hero.njk` | Homepage hero section |
 | `pagination.njk` | Pagination navigation |
 | `tag-list.njk` | Tag cloud or list |
 
@@ -251,10 +253,7 @@ Template for notes:
 {% extends "base.njk" %}
 
 {% block content %}
-<section class="hero">
-  <h1>{{ site.title }}</h1>
-  <p>{{ site.description }}</p>
-</section>
+{% include "hero.njk" %}
 
 <section class="recent-posts">
   <h2>Latest Posts</h2>
@@ -453,6 +452,27 @@ Template for notes:
   {% endfor %}
 </div>
 {% endif %}
+```
+
+### hero.njk
+
+The hero section is displayed on the homepage when `config.theme.showHero` is enabled:
+
+```nunjucks
+{% if config.theme.showHero %}
+<section class="hero">
+  <h1 class="hero-title">{{ site.title }}</h1>
+  <p class="hero-description">{{ site.description }}</p>
+</section>
+{% endif %}
+```
+
+Enable the hero section in your `_config.yml`:
+
+```yaml
+theme:
+  name: main
+  showHero: true
 ```
 
 ---
