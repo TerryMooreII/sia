@@ -51,7 +51,7 @@
       {% for note in collections.notes | limit(3) %}
       <article class="note-card">
         <time class="note-time">{{ note.date | date('short') }}</time>
-        <div class="note-preview">{{ note.excerpt | excerpt(150) }}</div>
+        <div class="note-preview">{{ note.excerptHtml | safe  }}</div>
         <a href="{{ note.url }}" class="note-link">Read more →</a>
       </article>
       {% endfor %}

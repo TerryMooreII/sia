@@ -44,7 +44,7 @@
   <div class="notes-grid">
     {% for note in collections.notes | limit(3) %}
     <article class="note-card">
-      <div class="note-card-content">{{ note.excerpt }}</div>
+      <div class="note-card-content">{{ note.excerptHtml | safe  }}</div>
       <footer class="note-card-footer">
         <time datetime="{{ note.date | date('iso') }}">{{ note.date | date('full_time') }}</time>
         <a href="{{ note.url }}" class="note-card-link">View →</a>
