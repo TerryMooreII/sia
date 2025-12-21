@@ -12,8 +12,8 @@
     
     <h1 class="article-title">{{ page.title }}</h1>
     
-    {% if page.excerpt %}
-    <p class="article-subtitle">{{ page.excerpt | excerpt(200) }}</p>
+    {% if page.excerptHtml | safe %}
+    <p class="article-subtitle">{{ page.excerptHtml | safe }}</p>
     {% endif %}
     
     <div class="article-byline">

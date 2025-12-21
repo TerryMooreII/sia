@@ -10,7 +10,7 @@
   {% for post in posts %}
   <article class="post-card">
     <h2 class="post-card-title">
-      <a href="{{ post.url }}">{{ post.title or post.excerpt }}</a>
+      <a href="{{ post.url }}">{{ post.title or post.excerptHtml | safe }}</a>
       {% if post.draft %}<span class="draft-badge">Draft</span>{% endif %}
     </h2>
     <div class="post-card-meta">
@@ -26,8 +26,8 @@
       {% endfor %}
     </div>
     {% endif %}
-    {% if post.excerpt %}
-    <p class="post-card-excerpt">{{ post.excerpt }}</p>
+    {% if post.excerptHtml %}
+    <p class="post-card-excerpt">{{ post.excerptHtml | safe }}</p>
     {% endif %}
   </article>
   {% endfor %}

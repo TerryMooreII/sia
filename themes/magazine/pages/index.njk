@@ -14,7 +14,7 @@
       <h2 class="featured-title">
         <a href="{{ featuredPost.url | url }}">{{ featuredPost.title }}</a>
       </h2>
-      <p class="featured-excerpt">{{ featuredPost.excerpt | excerpt(200) }}</p>
+      <p class="featured-excerpt">{{ featuredPost.excerptHtml | safe }}</p>
       <div class="featured-meta">
         <span class="featured-author">{{ featuredPost.author or site.author }}</span>
         <span class="featured-date">{{ featuredPost.date | date('long') }}</span>
@@ -41,7 +41,7 @@
         <h3 class="card-title">
           <a href="{{ post.url | url }}">{{ post.title }}</a>
         </h3>
-        <p class="card-excerpt">{{ post.excerpt | excerpt(100) }}</p>
+        <p class="card-excerpt">{{ post.excerptHtml | safe }}</p>
         <div class="card-meta">
           <time datetime="{{ post.date | date('iso') }}">{{ post.date | date('short') }}</time>
           <span>·</span>
@@ -64,7 +64,7 @@
     {% for note in collections.notes | limit(3) %}
     <article class="note-preview">
       <time datetime="{{ note.date | date('iso') }}">{{ note.date | date('short') }}</time>
-      <p>{{ note.excerpt | excerpt(150) }}</p>
+      <p>{{ note.excerptHtml | safe }}</p>
       <a href="{{ note.url | url }}" class="note-link">Read note →</a>
     </article>
     {% endfor %}

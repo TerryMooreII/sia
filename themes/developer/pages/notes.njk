@@ -16,7 +16,7 @@
           {{ note.date | date('full') }}
         </time>
         <div class="timeline-body">
-          <div class="note-text">{{ note.excerpt | excerpt(200) }}</div>
+          <div class="note-text">{{ note.excerptHtml | safe }}</div>
           <a href="{{ note.url }}" class="read-more">Continue reading →</a>
         </div>
         {% if note.tags %}

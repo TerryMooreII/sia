@@ -13,7 +13,7 @@
       {{ note.date | date('full') }}
     </time>
     <div class="note-content">
-      <p>{{ note.excerpt | excerpt(250) }}</p>
+      <p>{{ note.excerptHtml | safe }}</p>
       <a href="{{ note.url }}" class="note-read-more">Continue reading →</a>
     </div>
     {% if note.tags %}

@@ -24,7 +24,7 @@
       {% endfor %}
     </div>
     {% endif %}
-    <p class="post-card-excerpt">{{ post.excerpt }}</p>
+    <p class="post-card-excerpt">{{ post.excerptHtml | safe }}</p>
     <a href="{{ post.url }}" class="post-card-link">Read more →</a>
   </article>
   {% else %}
