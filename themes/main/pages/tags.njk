@@ -20,7 +20,7 @@
       <ul class="tag-posts">
         {% for item in tag.items | limit(5) %}
         <li>
-          <a href="{{ item.url }}">{{ item.title or item.excerpt }}</a>
+          <a href="{{ item.url }}">{{ item.title or item.excerptHtml | safe }}</a>
           <time datetime="{{ item.date | date('iso') }}">{{ item.date | date('short') }}</time>
         </li>
         {% endfor %}
