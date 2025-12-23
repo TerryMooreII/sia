@@ -121,7 +121,46 @@ pagination:
 server:
   port: 3000
   showDrafts: false
+
+assets:
+  css: []  # Custom CSS files (paths relative to root)
+  js: []   # Custom JavaScript files (paths relative to root)
 ```
+
+## Custom CSS and JavaScript
+
+You can inject custom CSS and JavaScript files into your theme by defining them in `_config.yml`:
+
+```yaml
+assets:
+  css:
+    - custom/styles.css
+    - vendor/library.css
+  js:
+    - custom/script.js
+    - vendor/analytics.js
+```
+
+Files are specified as paths relative to your project root. During build, CSS files are copied to `dist/styles/` and JavaScript files to `dist/scripts/`, preserving directory structure. Custom CSS is injected after theme styles (allowing overrides), and JavaScript is injected before the closing `</body>` tag.
+
+**Example:**
+```yaml
+assets:
+  css:
+    - assets/custom.css
+    - vendor/prism.css
+  js:
+    - assets/analytics.js
+    - vendor/prism.js
+```
+
+This will:
+- Copy `assets/custom.css` → `dist/styles/assets/custom.css`
+- Copy `vendor/prism.css` → `dist/styles/vendor/prism.css`
+- Copy `assets/analytics.js` → `dist/scripts/assets/analytics.js`
+- Copy `vendor/prism.js` → `dist/scripts/vendor/prism.js`
+
+And inject them into all pages automatically.
 
 ## Static Assets
 

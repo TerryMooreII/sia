@@ -1,0 +1,7 @@
+{# Custom JavaScript files - include before </body> #}
+{% if customAssets and customAssets.js %}
+{% for js in customAssets.js %}
+<script src="{{ js | url }}"></script>
+{% endfor %}
+{% endif %}
+

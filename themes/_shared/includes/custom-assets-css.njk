@@ -1,0 +1,7 @@
+{# Custom CSS files - include in <head> after theme styles #}
+{% if customAssets and customAssets.css %}
+{% for css in customAssets.css %}
+<link rel="stylesheet" href="{{ css | url }}">
+{% endfor %}
+{% endif %}
+

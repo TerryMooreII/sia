@@ -107,6 +107,35 @@ Array of all tags sorted by count (most used first):
 </ul>
 ```
 
+### `customAssets`
+
+Custom CSS and JavaScript files defined in `_config.yml`:
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `customAssets.css` | array | Array of CSS file paths (relative to output root) |
+| `customAssets.js` | array | Array of JavaScript file paths (relative to output root) |
+
+**Note:** Custom assets are automatically injected into all theme base layouts via shared includes (`custom-assets-css.njk` and `custom-assets-js.njk`). You typically don't need to access this variable directly unless creating custom layouts.
+
+**Example:**
+
+```nunjucks
+{# Manually inject custom CSS #}
+{% if customAssets and customAssets.css %}
+  {% for css in customAssets.css %}
+    <link rel="stylesheet" href="{{ css | url }}">
+  {% endfor %}
+{% endif %}
+
+{# Manually inject custom JavaScript #}
+{% if customAssets and customAssets.js %}
+  {% for js in customAssets.js %}
+    <script src="{{ js | url }}"></script>
+  {% endfor %}
+{% endif %}
+```
+
 ---
 
 ## Page Context Variables

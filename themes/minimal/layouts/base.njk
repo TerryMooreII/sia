@@ -5,6 +5,7 @@
   {% include "theme-script.njk" %}
   
   <link rel="stylesheet" href="{{ '/styles/main.css' | url }}">
+  {% include "custom-assets-css.njk" %}
   
   {% block head %}{% endblock %}
 </head>
@@ -16,6 +17,7 @@
   </main>
   
   {% include "footer.njk" %}
+  {% include "custom-assets-js.njk" %}
 </body>
 </html>
 
