@@ -9,7 +9,9 @@
       <a href="{{ '/tags/' | url }}" class="nav-link{% if page.url and page.url.startsWith('/tags') %} active{% endif %}">Tags</a>
       {% if collections.pages %}
       {% for p in collections.pages | limit(3) %}
+      {% if not p.hideFromHeader %}
       <a href="{{ p.url }}" class="nav-link{% if page.url == p.url %} active{% endif %}">{{ p.title }}</a>
+      {% endif %}
       {% endfor %}
       {% endif %}
       
