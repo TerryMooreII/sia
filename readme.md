@@ -66,7 +66,7 @@ The output will be in the `dist/` folder, ready to deploy to any static hosting.
 npx sia new post "My Post Title"
 ```
 
-Creates a new markdown file in `src/posts/` with front matter template.
+Creates a new folder `src/posts/YYYY-MM-DD-my-post-title/` with an `index.md` file inside. You can organize assets (images, PDFs, etc.) in the same folder.
 
 ### New Page
 
@@ -74,7 +74,7 @@ Creates a new markdown file in `src/posts/` with front matter template.
 npx sia new page "About Me"
 ```
 
-Creates a new page in `src/pages/`.
+Creates a new folder `src/pages/about-me/` with an `index.md` file inside. You can organize assets in the same folder.
 
 ### New Note
 
@@ -82,7 +82,7 @@ Creates a new page in `src/pages/`.
 npx sia new note "Quick thought"
 ```
 
-Creates a short note in `src/notes/`.
+Creates a new folder `src/notes/YYYY-MM-DD-quick-thought-TIMESTAMP/` with an `index.md` file inside. You can organize assets in the same folder.
 
 ## Project Structure
 
@@ -91,8 +91,17 @@ my-site/
 ├── _config.yml          # Site configuration
 ├── src/
 │   ├── posts/           # Blog posts (markdown)
+│   │   └── 2024-12-17-my-post/
+│   │       ├── index.md
+│   │       └── (assets can go here)
 │   ├── pages/           # Static pages
+│   │   └── about/
+│   │       ├── index.md
+│   │       └── (assets can go here)
 │   ├── notes/           # Short notes/tweets
+│   │   └── 2024-12-17-note-1234567890/
+│   │       ├── index.md
+│   │       └── (assets can go here)
 │   └── images/          # Images
 ├── assets/              # Static assets (optional)
 ├── static/              # Static assets (optional)
@@ -103,6 +112,8 @@ my-site/
 ├── styles/              # Custom CSS (optional)
 └── dist/                # Generated output
 ```
+
+Each post, page, and note is created as a folder containing an `index.md` file. This allows you to organize assets (images, PDFs, etc.) alongside your content in the same folder.
 
 ## Configuration
 

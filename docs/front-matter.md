@@ -366,19 +366,27 @@ permalink: /featured/special-post/
 
 ## Date from Filename
 
-Sia can extract dates from filenames using this pattern:
+Sia can extract dates from filenames (or folder names when using `index.md`) using this pattern:
 
 ```
 YYYY-MM-DD-slug.md
 ```
 
+or for folder-based content:
+
+```
+YYYY-MM-DD-slug/index.md
+```
+
 ### Examples
 
-| Filename | Extracted Date | Extracted Slug |
-|----------|----------------|----------------|
-| `2024-12-17-my-post.md` | December 17, 2024 | `my-post` |
-| `2024-01-05-new-year.md` | January 5, 2024 | `new-year` |
-| `about.md` | Current date | `about` |
+| Filename/Folder | Extracted Date | Extracted Slug |
+|-----------------|----------------|----------------|
+| `2024-12-17-my-post/index.md` | December 17, 2024 | `my-post` |
+| `2024-01-05-new-year/index.md` | January 5, 2024 | `new-year` |
+| `about/index.md` | Current date | `about` |
+| `2024-12-17-my-post.md` | December 17, 2024 | `my-post` (backward compatible) |
+| `about.md` | Current date | `about` (backward compatible) |
 
 ### Priority
 
@@ -391,8 +399,8 @@ Date resolution follows this priority:
 Slug resolution:
 
 1. `slug` in front matter (highest priority)
-2. Slug extracted from filename (after date prefix)
-3. Slugified filename
+2. Slug extracted from filename or folder name (after date prefix if present)
+3. Slugified filename or folder name
 
 ---
 

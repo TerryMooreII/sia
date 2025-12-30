@@ -15,6 +15,7 @@ import { buildCommand } from '../lib/build.js';
 import { newCommand } from '../lib/new.js';
 import { initCommand } from '../lib/init.js';
 import { themeCommand } from '../lib/theme.js';
+import { migrateCommand } from '../lib/migrate.js';
 
 program
   .name('sia')
@@ -53,6 +54,12 @@ program
   .description('Create a new Sia theme package')
   .option('-q, --quick', 'Skip prompts and use defaults')
   .action(themeCommand);
+
+program
+  .command('migrate')
+  .description('Migrate standalone .md files to folder-based structure (folder/index.md)')
+  .option('--dry-run', 'Preview changes without applying them', false)
+  .action(migrateCommand);
 
 program.parse();
 

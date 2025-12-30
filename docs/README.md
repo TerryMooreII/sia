@@ -68,8 +68,17 @@ my-site/
 ├── _config.yml          # Site configuration
 ├── src/
 │   ├── posts/           # Blog posts (markdown)
+│   │   └── 2024-12-17-my-post/
+│   │       ├── index.md
+│   │       └── (assets can go here)
 │   ├── pages/           # Static pages
+│   │   └── about/
+│   │       ├── index.md
+│   │       └── (assets can go here)
 │   ├── notes/           # Short notes/tweets
+│   │   └── 2024-12-17-note-1234567890/
+│   │       ├── index.md
+│   │       └── (assets can go here)
 │   └── images/          # Images
 ├── assets/              # Static assets (optional)
 ├── static/              # Static assets (optional)
@@ -80,6 +89,8 @@ my-site/
 ├── styles/              # Custom CSS (optional)
 └── dist/                # Generated output
 ```
+
+Each post, page, and note is created as a folder containing an `index.md` file. This allows you to organize assets (images, PDFs, etc.) alongside your content in the same folder.
 
 ## Configuration
 
