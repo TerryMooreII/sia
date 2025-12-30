@@ -10,6 +10,8 @@ Welcome to the Sia documentation. Sia is a simple, powerful static site generato
 | [Markdown Guide](markdown-guide.md) | Markdown syntax and all supported plugins |
 | [Front Matter Reference](front-matter.md) | YAML front matter options for posts, pages, and notes |
 | [Creating Themes](creating-themes.md) | How to create and customize themes |
+| [Plugin System](plugins.md) | Extend Sia with plugins - hooks, API, and configuration |
+| [Creating Plugins](creating-plugins.md) | Guide to creating local and npm package plugins |
 
 ## Quick Links
 
@@ -58,6 +60,7 @@ npm run build
 - **Live Reload** - Development server with hot reloading
 - **Multiple Themes** - Built-in themes (main, minimal, developer, magazine) with light/dark mode
 - **Custom Theme Packages** - Create and share themes as npm packages (`sia-theme-*`)
+- **Plugin System** - Extend functionality with local or npm plugins (`sia-plugin-*`)
 - **RSS Feed** - Automatic RSS feed generation
 - **SEO Ready** - Open Graph and Twitter Card meta tags included
 
@@ -86,6 +89,8 @@ my-site/
 ├── favicon.ico          # Site favicon (optional)
 ├── _layouts/            # Custom layouts (optional)
 ├── _includes/           # Custom includes (optional)
+├── _plugins/            # Local plugins (optional)
+│   └── my-plugin.js
 ├── styles/              # Custom CSS (optional)
 └── dist/                # Generated output
 ```
@@ -136,6 +141,12 @@ server:
 assets:
   css: []  # Custom CSS files (paths relative to root)
   js: []   # Custom JavaScript files (paths relative to root)
+
+plugins:
+  enabled: true          # Master switch for plugins
+  strictMode: false      # Fail build on plugin errors
+  order: []              # Explicit plugin execution order (optional)
+  config: {}             # Plugin-specific configuration
 ```
 
 ## Custom CSS and JavaScript
@@ -172,6 +183,40 @@ This will:
 - Copy `vendor/prism.js` → `dist/scripts/vendor/prism.js`
 
 And inject them into all pages automatically.
+
+## Plugin System
+
+Sia includes a powerful plugin system that allows you to extend functionality at key points in the build lifecycle. Plugins can:
+
+- Transform content during parsing
+- Generate additional files (search indexes, sitemaps, etc.)
+- Add custom Marked extensions for markdown processing
+- Register custom Nunjucks template filters and functions
+- Modify site data before rendering
+- Perform post-build tasks
+
+### Using Plugins
+
+Plugins can be local (in `_plugins/` directory) or npm packages (with `sia-plugin-*` naming):
+
+```bash
+# Install an npm plugin
+npm install sia-plugin-search
+
+# Or create a local plugin in _plugins/my-plugin.js
+```
+
+Configure plugins in `_config.yml`:
+
+```yaml
+plugins:
+  enabled: true
+  config:
+    sia-plugin-search:
+      outputPath: search-index.json
+```
+
+See the [Plugin System documentation](plugins.md) for complete details and the [Creating Plugins guide](creating-plugins.md) for examples.
 
 ## Static Assets
 
@@ -236,6 +281,7 @@ dist/
 | `sia new page "Title"` | Create a new page |
 | `sia new note "Content"` | Create a new note |
 | `sia theme <name>` | Create a new theme package |
+| `sia migrate` | Migrate standalone .md files to folder structure |
 
 ## License
 
